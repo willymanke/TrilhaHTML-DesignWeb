@@ -1,0 +1,584 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a1121">
+  <meta name="description" content="Trilha HTML: 24 desafios práticos de estrutura, textos, links, mídias, semântica, formulários e acessibilidade.">
+  <title>Trilha HTML • Desafios de Design Web</title>
+  <style>
+:root{--bg:#080f1d;--surface:#0d1729;--surface2:#121f34;--surface3:#18263b;--line:#26344a;--text:#f3f7ff;--muted:#9babc3;--primary:#a0f1cc;--primary-dark:#113526;--violet:#ad9bff;--amber:#f7c87c;--danger:#ff8f9e;--shadow:0 15px 50px rgba(0,0,0,.2)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:14px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}button,input,textarea{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid var(--primary);outline-offset:3px}a{color:inherit;text-decoration:none}h1,h2,h3,p{margin-top:0}button:disabled{cursor:not-allowed;opacity:.55}[hidden]{display:none!important}
+.app-shell{display:grid;grid-template-columns:264px minmax(0,1fr);min-height:100vh}.sidebar{height:100vh;position:sticky;top:0;display:flex;flex-direction:column;background:#0c1627;border-right:1px solid var(--line);z-index:20}.brand{min-height:88px;display:flex;gap:12px;align-items:center;padding:22px 24px;border-bottom:1px solid var(--line)}.brand-mark{height:39px;width:39px;display:grid;place-items:center;border:1px solid #436a60;background:#183c36;color:var(--primary);border-radius:12px;font-weight:900;font-size:17px;letter-spacing:-4px;padding-right:4px}.brand strong{font-size:22px;letter-spacing:-1.2px;line-height:1;display:block}.brand-accent{color:var(--primary)}.brand small{display:block;color:#8298b0;font-size:9px;font-weight:800;letter-spacing:2px;margin-top:7px}.sidebar-scroll{padding:25px 12px 10px;overflow:auto;scrollbar-color:#35455f transparent;flex:1}.course-meta{color:#98a9bd;font-size:9px;font-weight:900;letter-spacing:1px;display:flex;align-items:center;gap:7px;padding:0 12px 17px;white-space:nowrap}.status-dot,.live-dot{width:7px;height:7px;display:inline-block;background:#6fe4b1;border-radius:99px;box-shadow:0 0 9px #6fe4b175;flex-shrink:0}.course-num{color:#7186a0;margin-left:auto}.progress-card{margin:0 8px 25px;padding:16px;background:#142138;border:1px solid #2c405b;border-radius:13px}.progress-header,.progress-foot{display:flex;justify-content:space-between;gap:10px;align-items:center}.progress-header span{color:#c3d0e0;font-size:12px}.progress-header strong{font-size:13px;color:var(--primary)}.progress-track{height:7px;background:#283a4e;border-radius:30px;overflow:hidden;margin:12px 0 8px}.progress-track>div{height:100%;width:0%;transition:width .35s;background:linear-gradient(90deg,#5fcca7,#a8f4d4);border-radius:30px}.progress-foot{color:#899cb4;font-size:10px;font-weight:700}.progress-foot span:last-child{color:var(--amber)}.module-name{font-size:10px;color:#8295af;letter-spacing:1.3px;font-weight:900;text-transform:uppercase;padding:12px 14px 7px;margin-top:5px}.module-group{margin-bottom:10px}.level-link{width:100%;border:1px solid transparent;background:transparent;color:#a5b5cc;display:flex;align-items:center;gap:11px;text-align:left;padding:10px 11px;border-radius:9px;transition:background .15s,color .15s}.level-link:hover{background:#18263a;color:white}.level-link.active{background:#1d3a38;border-color:#347161;color:#effff9}.level-link .level-number{display:grid;place-items:center;width:28px;height:28px;background:#1a293e;border:1px solid #32445c;border-radius:8px;font-size:11px;font-weight:800;color:#8da2ba;flex-shrink:0}.level-link.active .level-number{background:#2c6253;border-color:#589d87;color:white}.level-link.done .level-number{color:#a5f4d2;border-color:#407d6c}.level-link .level-title{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px;font-weight:600;flex:1}.level-check{font-size:13px;color:#9ef0c7}.sidebar-footer{padding:18px 22px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:8px;color:#8295ac;font-size:11px}.subtle-action{border:0;background:none;color:#a9c7d6;text-decoration:underline;text-align:left;padding:0;font-size:11px;width:max-content}.subtle-action:hover{color:white}
+.content{min-width:0}.topbar{height:75px;display:flex;justify-content:space-between;align-items:center;gap:16px;border-bottom:1px solid #223147;background:#0b1423;padding:0 38px;position:sticky;top:0;z-index:10}.breadcrumb{color:#8ea2bd;font-size:10px;letter-spacing:1.1px;font-weight:850}.breadcrumb span:last-child{color:#e3edf8}.breadcrumb-sep{margin:0 11px;color:#52647f}.topbar-actions{display:flex;align-items:center;gap:22px}.online-pill{display:flex;align-items:center;gap:8px;color:#a1b5ca;font-size:10px;font-weight:800;letter-spacing:.55px}.topbar-btn{color:#effff9;border:1px solid #345548;background:#19332e;border-radius:10px;padding:10px 15px;font-size:12px;font-weight:800;display:flex;gap:7px;align-items:center}.topbar-btn:hover{background:#23473b}.mobile-menu{display:none;border:1px solid var(--line);color:white;background:#182538;border-radius:9px;padding:8px 12px;font-size:18px}.page-wrap{max-width:1470px;margin:auto;padding:31px 36px 27px}.hero{border:1px solid #2c4353;background:radial-gradient(ellipse at 80% 90%,#193b4b 0,transparent 55%),linear-gradient(115deg,#132737,#122238 55%,#172b45);border-radius:18px;min-height:240px;display:flex;position:relative;overflow:hidden;padding:31px 35px;justify-content:space-between;gap:32px}.hero:after{content:"";position:absolute;right:8px;bottom:-80px;width:370px;height:220px;border:1px solid #9ef5be25;border-radius:50%;transform:rotate(-20deg)}.hero-copy{max-width:620px;position:relative;z-index:2}.eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--primary);font-size:10px;letter-spacing:2px;font-weight:900}.eyebrow-line{width:20px;height:1px;background:var(--primary)}.hero h1{font-size:clamp(32px,4vw,51px);line-height:1.09;letter-spacing:-2.2px;margin:16px 0}.hero h1 span{color:var(--primary)}.hero p{color:#aec3d3;font-size:13px;line-height:1.7;max-width:520px;margin-bottom:18px}.hero-tags{display:flex;flex-wrap:wrap;gap:8px}.hero-tags span{border:1px solid #446074;background:#13283b99;color:#c9d9e7;border-radius:99px;padding:6px 11px;font-size:10px;font-weight:700}.hero-art{flex-shrink:0;align-self:center;width:260px;height:170px;background:#0f1a2ae8;border:1px solid #57708a;border-radius:15px;transform:rotate(6deg);padding:16px 18px;box-shadow:0 25px 55px #0005;position:relative;z-index:1}.window-dots{display:flex;gap:5px;margin-bottom:19px}.window-dots i{height:7px;width:7px;background:#fb859a;border-radius:50%}.window-dots i:nth-child(2){background:#ffcc84}.window-dots i:nth-child(3){background:#86e5c0}.mock-line{display:flex;align-items:center;gap:10px;margin:10px 0}.mock-line b{width:32px;height:8px;border-radius:4px;background:#9c8ffe}.mock-line span{width:120px;height:7px;background:#39536d;border-radius:4px}.mock-line.short span{width:90px}.mock-line.mid span{width:135px}.mock-cards{display:flex;gap:8px;margin-top:18px}.mock-cards i{flex:1;height:30px;background:linear-gradient(135deg,#264961,#358779);border-radius:6px}.mock-cards i:nth-child(2){background:linear-gradient(135deg,#393e71,#7265b2)}.mock-code{position:absolute;right:-13px;bottom:-17px;background:#1b3b33;color:#c2f5d9;padding:9px;border:1px solid #448574;border-radius:7px;font:10px ui-monospace,monospace;box-shadow:0 9px 15px #0006}.mock-code em{color:var(--amber);font-style:normal}.mock-code span{color:#9ca9ff}
+.section-top{display:flex;justify-content:space-between;gap:10px;align-items:center;margin:29px 3px 13px}.section-label{display:flex;align-items:center;gap:9px;color:#eff4fa;font-size:11px;font-weight:900;letter-spacing:1.6px}.section-marker{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:7px;background:#23453c;color:var(--primary);font-size:10px;letter-spacing:0}.muted-small{color:#7f93aa;font-size:10px;letter-spacing:1px;font-weight:900}.mission-card{background:#101b2c;border:1px solid var(--line);border-radius:17px;overflow:hidden;box-shadow:var(--shadow)}.mission-head{display:flex;align-items:center;justify-content:space-between;padding:25px 29px 19px;gap:20px}.mission-meta{display:flex;align-items:center;gap:9px;margin-bottom:12px;flex-wrap:wrap}.level-pill{color:#bdf8dd;background:#20413d;border:1px solid #3b7462;padding:4px 10px;border-radius:6px;font-size:10px;font-weight:900;letter-spacing:.8px}.difficulty{color:#cabdff;background:#332d56;border:1px solid #5e538c;border-radius:6px;padding:4px 10px;font-size:10px;font-weight:900;letter-spacing:.8px}.solved-badge{color:#bbf7d9;font-size:10px;font-weight:900}.mission-head h2{font-size:clamp(23px,2.5vw,30px);letter-spacing:-1px;line-height:1.25;margin:0 0 7px}.mission-head p{margin:0;color:#9cacc5;font-size:13px;max-width:740px;line-height:1.6}.mission-icon{height:60px;width:60px;border-radius:16px;background:#213448;border:1px solid #3a5770;display:grid;place-items:center;font-size:30px;flex-shrink:0}.objective{display:flex;align-items:start;gap:11px;margin:0 29px 24px;padding:13px 15px;border:1px solid #355c53;border-left:3px solid #8fefbb;border-radius:9px;background:#142d2b}.objective-symbol{font-size:19px;font-weight:800;color:var(--primary);line-height:1.1}.objective strong{color:var(--primary);font-size:10px;letter-spacing:1.3px}.objective p{color:#d5e9e1;margin:3px 0 0;font-size:12px;line-height:1.5}.workspace{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}.editor-pane,.preview-pane{min-width:0;padding:20px 23px 23px}.editor-pane{border-right:1px solid var(--line)}.pane-heading{display:flex;justify-content:space-between;align-items:center;gap:9px;margin-bottom:12px;min-height:29px}.pane-title{font-size:12px;font-weight:900;color:#e2ebf7;display:inline-flex;gap:9px;align-items:center}.pane-icon{font-size:18px;color:#a5b7cb;font-weight:400}.file-tab{display:flex;align-items:center;gap:8px;font-size:11px;color:#a9bdd3;background:#1e3045;padding:6px 10px;border-radius:6px}.live-dot{width:6px;height:6px}.editor-outer{background:#08111f;border:1px solid #344961;border-radius:11px;overflow:hidden}.editor-outer textarea{display:block;resize:vertical;min-height:285px;max-height:650px;height:285px;padding:20px;width:100%;border:0;outline:none;background:transparent;color:#cbecff;font:13px/1.8 "Cascadia Code",Consolas,"Courier New",monospace;tab-size:2;white-space:pre;overflow:auto}.editor-outer textarea::placeholder{color:#61748b}.editor-outer:focus-within{border-color:#84d9b4;box-shadow:0 0 0 2px #80e9bd22}.editor-bottom{display:flex;justify-content:space-between;gap:5px;color:#697e99;margin-top:9px;font-size:10px}.actions{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-top:16px}.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:9px;border:1px solid transparent;padding:10px 14px;min-height:40px;font-weight:850;font-size:11px;transition:filter .15s,background .15s}.btn:hover{filter:brightness(1.13)}.btn-primary{background:var(--primary);color:#103224}.btn-outline{border-color:#456078;color:#e1edf7;background:#1b2e44}.btn-ghost{color:#9bacbf;background:transparent;padding-left:9px;padding-right:9px}.btn-next{background:#2b4d80;border:1px solid #4c79be;color:#e7f0ff;margin-top:12px;width:100%}.hint-box{background:#362d21;border:1px solid #786040;border-radius:9px;padding:13px;color:#ffdda8;font-size:12px;margin-top:13px}.feedback{border-radius:10px;padding:14px;margin-top:12px;font-size:12px;line-height:1.55}.feedback.success{background:#19372f;border:1px solid #41856d;color:#d4ffea}.feedback.error{background:#3a242f;border:1px solid #895061;color:#ffe1e8}.feedback strong{display:block;margin-bottom:5px}.feedback ul{padding-left:18px;margin:7px 0 0}.feedback li{margin:3px 0}.device-switch{display:flex;padding:3px;border-radius:7px;background:#17263c;border:1px solid #31445c;gap:3px}.device-switch button{border:none;border-radius:5px;color:#8196b0;background:none;min-width:34px;height:25px;font-size:18px;line-height:1}.device-switch button[aria-pressed="true"]{color:#e8fff1;background:#315d53}.preview-viewport{position:relative;height:306px;display:flex;justify-content:flex-start;align-items:stretch;overflow:auto;background-color:#0a1220;background-image:linear-gradient(#2939504d 1px,transparent 1px),linear-gradient(90deg,#2939504d 1px,transparent 1px);background-size:18px 18px;border:1px solid #334963;border-radius:11px;padding:10px}.preview-viewport iframe{position:absolute;left:10px;top:10px;width:720px;min-width:720px;height:100%;border:0;border-radius:7px;background:white;display:block}.preview-caption{display:flex;justify-content:space-between;gap:12px;margin:10px 0 11px;color:#8497aa;font-size:10px;letter-spacing:1px;font-weight:900}.preview-caption>span:first-child{display:flex;align-items:center;gap:7px}.html-details{border:1px solid #354961;border-radius:9px;background:#152339;overflow:hidden}.html-details summary{padding:12px 14px;cursor:pointer;color:#bfd1e8;font-weight:750;font-size:11px}.html-details pre{color:#bfd1df;white-space:pre-wrap;overflow-wrap:anywhere;padding:15px;margin:0;border-top:1px solid #354961;background:#0c1524;font:11px/1.7 ui-monospace,Consolas,monospace;max-height:260px;overflow:auto}.bottom-sections{display:grid;grid-template-columns:1.1fr 1fr;gap:16px;margin-top:20px}.tip-card,.external-card{border:1px solid #26384d;background:#101d30;border-radius:13px;padding:21px;min-width:0}.tip-card{display:flex;gap:15px}.tip-icon{color:#b2f5d8;font-size:24px}.bottom-sections h3{font-size:14px;margin:0 0 6px}.bottom-sections p{font-size:11px;color:#9fb2c9;line-height:1.65;margin-bottom:7px}.external-title{display:flex;gap:12px}.external-title>span{color:#af9bff;font-size:22px}.external-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:13px}.external-links a{color:#cbd9ef;border:1px solid #38526c;background:#172a40;padding:6px 9px;border-radius:7px;font-size:10px}.external-links a:hover{background:#2b4861;color:white}.page-footer{display:flex;justify-content:space-between;gap:10px;margin-top:25px;font-size:10px;color:#657c98}.mobile-overlay{position:fixed;inset:0;background:#000a;z-index:15}.report-dialog{border:1px solid #415975;background:#111e31;color:var(--text);width:min(560px,calc(100vw - 24px));max-height:90vh;overflow:auto;border-radius:17px;box-shadow:0 30px 90px #000a;padding:0}.report-dialog::backdrop{background:#020815b8}.dialog-top{padding:25px 26px 13px;display:flex;justify-content:space-between;align-items:start}.dialog-top h2{font-size:25px;margin:8px 0 0}.close-dialog{border:0;background:#22334c;color:white;height:34px;width:34px;border-radius:8px;font-size:25px}.report-body{padding:0 26px 26px}.report-body p{font-size:12px;color:#a7bdd2}.report-body label{display:block;margin:12px 0 5px;font-size:11px;color:#c8dcef;font-weight:750}.report-body input{width:100%;color:#fff;background:#0a1423;border:1px solid #37506b;border-radius:9px;padding:11px}.report-summary{margin-top:18px;background:#1a3041;border:1px solid #36566b;border-radius:11px;padding:14px;font-size:12px;max-height:230px;overflow:auto}.report-summary b{color:#b0f4d8}.report-summary ul{margin:10px 0 0;padding-left:17px}.report-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}.report-note{min-height:18px;margin:9px 0 0;color:#b9f4d6!important}.mobile-menu,.mobile-overlay{display:none}
+@media(max-width:1150px){.app-shell{grid-template-columns:236px minmax(0,1fr)}.page-wrap{padding:25px 22px}.topbar{padding:0 24px}.hero-art{width:210px}.workspace{grid-template-columns:1fr}.editor-pane{border-right:0;border-bottom:1px solid var(--line)}.preview-viewport{height:318px}}
+@media(max-width:820px){.app-shell{display:block}.sidebar{width:270px;position:fixed;left:0;top:0;transform:translateX(-100%);transition:transform .22s}.sidebar.open{transform:translateX(0)}.mobile-menu{display:block}.mobile-overlay:not([hidden]){display:block}.topbar{padding:0 18px;height:65px}.online-pill{display:none}.hero-art{display:none}.hero{min-height:auto;padding:28px}.bottom-sections{grid-template-columns:1fr}.page-wrap{padding:19px 15px}.breadcrumb{font-size:9px}.topbar-btn{padding:9px}.mission-head{padding:21px 18px 15px}.objective{margin:0 18px 20px}.editor-pane,.preview-pane{padding:17px}.editor-outer textarea{min-height:225px;height:225px}.page-footer{flex-direction:column}.mission-icon{height:48px;width:48px;font-size:25px}}
+@media(max-width:440px){.topbar-btn span{display:none}.hero h1{letter-spacing:-1.5px}.hero{padding:22px}.hero-tags{gap:5px}.hero-tags span{font-size:9px}.mission-head{align-items:start}.mission-icon{width:41px;height:41px;font-size:20px;border-radius:12px}.actions .btn{flex:1}.actions .btn-ghost{flex-basis:100%}.editor-bottom span:last-child{display:none}.report-actions .btn{width:100%}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
+
+/* Dicas contextualizadas: código + exemplo ao vivo (versão 2). */
+.hint-box{background:#152a32;border:1px solid #3b685f;border-left:4px solid #83e3b6;border-radius:12px;padding:18px;color:#e7f4ee;font-size:12px;margin-top:14px;line-height:1.6;}
+.hint-heading{font-size:15px;color:#bdf8dc;margin:0 0 9px;font-weight:850;}
+.hint-concept{margin:0 0 18px;color:#d9e7e6;}
+.hint-label{font-size:10px;font-weight:900;letter-spacing:1px;color:#a4edd0;margin:16px 0 6px;}
+.hint-example-title{font-size:14px;margin:0 0 4px;color:#f7fbff;}
+.hint-context{margin:0 0 12px;color:#c1d4dd;}
+.hint-snippets{display:grid;grid-template-columns:1fr;gap:9px;}
+.hint-snippet{min-width:0;border:1px solid #3b5260;border-radius:8px;background:#091521;overflow:hidden;}
+.hint-code-label{color:#96b7c7;font-size:10px;font-weight:800;letter-spacing:.8px;background:#142436;padding:5px 10px;border-bottom:1px solid #3b5260;}
+.hint-snippet pre{margin:0;padding:11px;max-height:200px;overflow:auto;color:#b6e5ff;font:11px/1.65 "Cascadia Code",Consolas,"Courier New",monospace;white-space:pre;tab-size:2;}
+.hint-snippet code{font:inherit;}
+.hint-live-label{margin-top:14px;}
+.hint-example-preview{display:block;width:100%;height:148px;border:1px solid #8aa7ab;border-radius:8px;background:#fff;}
+.hint-why,.hint-apply{margin:11px 0 0;color:#d6e9e9;}
+.hint-apply{border-left:2px solid #a5f3c8;padding-left:10px;}
+.hint-note{margin:12px 0 0;color:#a3b9c1;font-size:11px;font-style:italic;}
+.hint-solution-banner{border-radius:7px;padding:10px;background:#204936;color:#c3f4d8;margin:0 0 13px;font-weight:750;}
+@media(max-width:600px){.hint-box{padding:13px}.hint-snippet pre{font-size:10px}}
+
+/* Legibilidade dos exemplos — propriedades em linhas separadas. */
+.hint-snippet pre{font-size:12px;line-height:1.75;max-height:340px;padding:13px 14px;white-space:pre;overflow-x:auto;overflow-y:auto;}
+.hint-code-label{font-size:11px;padding:8px 12px;}
+@media(max-width:600px){.hint-snippet pre{font-size:11px;line-height:1.7;max-height:300px;}}
+
+/* Ajustes da Trilha HTML */
+.hero .mock-code{white-space:nowrap;font-size:12px}
+.editor-outer textarea{min-height:340px;height:340px;resize:vertical;line-height:1.65}
+.preview-viewport{height:345px;padding:10px}
+.preview-viewport iframe{position:relative;left:auto;top:auto;min-width:0;width:100%;height:100%;max-width:none;flex:none}
+.preview-viewport.mobile iframe{width:360px;max-width:100%}
+.preview-viewport.mobile{justify-content:center}
+.hint-box{background:#132932;border-color:#385d70;border-left-color:#8bdafa;color:#d7ebf5}
+.hint-heading{color:#a4e5ff}.hint-label{color:#a4e5ff}
+.hint-snippet pre{white-space:pre;overflow:auto;max-height:420px}
+.hint-example-preview{height:190px; background:#fff}
+.hint-use{color:#c5d9e9;margin:0 0 12px}
+.hint-context{color:#c5d9e9}
+.hint-example-title{margin-top:6px}
+.hint-box .hint-snippet code{color:#bfe7ff}
+.solution-box{margin-top:13px;border:1px solid #52637f;background:#111e30;border-radius:11px;padding:14px}
+.solution-box h3{font-size:13px;color:#d9eaff;margin:0 0 9px}
+.solution-box pre{font:12px/1.7 ui-monospace,'Cascadia Code',Consolas,monospace;color:#bfe7ff;overflow:auto;max-height:400px;white-space:pre;margin:0;padding:14px;background:#07111e;border-radius:7px;border:1px solid #273c50}
+.solution-box p{color:#abbfd2;font-size:11px;margin:9px 0 0}
+.editor-note{color:#86a4bd;font-size:11px;margin:9px 0 0}
+.module-help{font-size:12px;color:#9eb4c8;margin:8px 0 0}
+@media(max-width:820px){.editor-outer textarea{height:275px;min-height:275px}}
+
+</style>
+  
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="Navegação dos desafios">
+      <a class="brand" href="#inicio" aria-label="Trilha HTML — início">
+        <span class="brand-mark" aria-hidden="true">{ }</span>
+        <span><strong>trilha<span class="brand-accent">html</span></strong><small>DESIGN WEB LAB</small></span>
+      </a>
+      <div class="sidebar-scroll">
+        <div class="course-meta"><span class="status-dot"></span> APRENDA NA PRÁTICA <span class="course-num">24 MISSÕES</span></div>
+        <div class="progress-card">
+          <div class="progress-header"><span>Seu progresso</span><strong id="progress-label">0 / 24</strong></div>
+          <div class="progress-track"><div id="progress-fill"></div></div>
+          <div class="progress-foot"><span id="progress-pct">0% concluído</span><span id="xp-count">0 XP</span></div>
+        </div>
+        <nav id="level-nav" aria-label="Lista de desafios"></nav>
+      </div>
+      <div class="sidebar-footer"><span>Feito para explorar, errar e aprender.</span><button id="reset-progress" class="subtle-action" type="button">Reiniciar progresso</button></div>
+    </aside>
+
+    <main class="content" id="inicio">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobile-menu" type="button" aria-controls="sidebar" aria-expanded="false" aria-label="Abrir menu">☰</button>
+        <div class="breadcrumb">TRILHA DE APRENDIZAGEM <span class="breadcrumb-sep">/</span> <span id="breadcrumb-module">Fundamentos</span></div>
+        <div class="topbar-actions"><span class="online-pill"><span class="status-dot"></span> 100% NO NAVEGADOR</span><button class="topbar-btn" id="report-btn" type="button">▤ <span>Meu relatório</span></button></div>
+      </header>
+
+      <div class="page-wrap">
+        <section class="hero">
+          <div class="hero-copy">
+            <div class="eyebrow"><span class="eyebrow-line"></span> LABORATÓRIO INTERATIVO DE HTML</div>
+            <h1>Da estrutura à <span>experiência.</span></h1>
+            <p>Aprenda a construir a estrutura de páginas reais: da primeira tag aos formulários e à acessibilidade. Escreva HTML e veja o resultado na hora.</p>
+            <div class="hero-tags"><span>◈ 24 desafios</span><span>⌨ Editor HTML ao vivo</span><span>◷ Salva seu progresso</span></div>
+          </div>
+          <div class="hero-art" aria-hidden="true">
+            <div class="window-dots"><i></i><i></i><i></i></div>
+            <div class="mock-line short"><b></b><span></span></div>
+            <div class="mock-line"><b></b><span></span></div>
+            <div class="mock-line mid"><b></b><span></span></div>
+            <div class="mock-cards"><i></i><i></i><i></i></div>
+            <div class="mock-code">&lt;main&gt; <span>suas ideias</span> &lt;/main&gt;</div>
+          </div>
+        </section>
+
+        <section class="mission-section" aria-labelledby="challenge-heading">
+          <div class="section-top"><div class="section-label"><span class="section-marker">01</span> ÁREA DE DESAFIOS</div><span id="level-count" class="muted-small">DESAFIO 01 DE 24</span></div>
+          <article class="mission-card">
+            <div class="mission-head">
+              <div><div class="mission-meta"><span class="level-pill" id="level-pill">NÍVEL 01</span><span class="difficulty" id="difficulty">INICIANTE</span><span id="solved-badge" class="solved-badge" hidden>✓ CONCLUÍDO</span></div><h2 id="challenge-heading">Carregando desafio...</h2><p id="challenge-description"></p></div>
+              <div class="mission-icon" id="mission-icon" aria-hidden="true">🎮</div>
+            </div>
+            <div class="objective"><div class="objective-symbol">↗</div><div><strong>SUA MISSÃO</strong><p id="challenge-objective"></p></div></div>
+            <div class="workspace">
+              <section class="editor-pane" aria-labelledby="editor-title">
+                <div class="pane-heading"><span class="pane-title" id="editor-title"><span class="pane-icon">⌨</span> Editor HTML</span><span class="file-tab">index.html <span class="live-dot"></span></span></div>
+                <div class="editor-outer"><textarea id="html-editor" autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false" aria-label="Digite seu HTML neste editor" placeholder="<!-- Escreva seu HTML aqui -->"></textarea></div>
+                <div class="editor-bottom"><span>HTML • Estruture, teste, aprenda.</span><span>Ctrl + Enter para verificar</span></div>
+                <div class="actions"><button id="check-btn" class="btn btn-primary" type="button">▶ Verificar código</button><button id="hint-btn" class="btn btn-outline" type="button" aria-controls="hint-box" aria-expanded="false">💡 Dica + exemplo</button><button id="solution-btn" class="btn btn-ghost" type="button">Ver solução</button></div>
+                <div id="hint-box" class="hint-box" hidden></div>
+                <div id="feedback" role="status" aria-live="polite" class="feedback" hidden></div>
+                <button id="next-btn" type="button" class="btn btn-next" hidden>Próximo desafio →</button>
+              </section>
+              <section class="preview-pane" aria-labelledby="preview-title">
+                <div class="pane-heading"><span class="pane-title" id="preview-title"><span class="pane-icon">◫</span> Pré-visualização</span><div class="device-switch" role="group" aria-label="Largura da pré-visualização"><button id="desktop-view" aria-pressed="true" title="Visualização desktop" type="button">▣</button><button id="mobile-view" aria-pressed="false" title="Visualização celular" type="button">▯</button></div></div>
+                <div class="preview-viewport" id="preview-viewport"><iframe id="preview-frame" title="Prévia segura do HTML digitado" sandbox="allow-same-origin"></iframe></div>
+                <div class="preview-caption"><span><span class="status-dot"></span> <span id="preview-status">PRÉVIA AO VIVO</span></span><span id="preview-size">720 PX</span></div>
+                <details class="html-details"><summary>◇ Ver critérios da missão</summary><pre><code id="html-source"></code></pre></details>
+              </section>
+            </div>
+          </article>
+        </section>
+
+        <section class="bottom-sections" aria-label="Recursos complementares">
+          <div class="tip-card"><span class="tip-icon">✦</span><div><h3>Aprendizado na prática</h3><p>Escreva suas tags HTML no editor e clique em <strong>Verificar código</strong>. Cada missão confere a estrutura e os atributos solicitados. Em <strong>Dica + exemplo</strong>, veja uma aplicação diferente do mesmo conceito, com código e prévia visual — sem entregar a resposta.</p><p>Para o <strong>caderno digital</strong>, registre prints dos desafios concluídos com o código e a prévia.</p></div></div>
+          <div class="external-card"><div class="external-title"><span>↗</span><div><h3>Quer ir além?</h3><p>Continue aprendendo desenvolvimento web.</p></div></div><div class="external-links"><a href="https://developer.mozilla.org/pt-BR/docs/Web/HTML" target="_blank" rel="noopener noreferrer">Guia HTML na MDN ↗</a><a href="https://developer.mozilla.org/pt-BR/docs/Learn_web_development" target="_blank" rel="noopener noreferrer">Aprender desenvolvimento web ↗</a><a href="https://www.w3schools.com/html/" target="_blank" rel="noopener noreferrer">Exercícios HTML ↗</a></div></div>
+        </section>
+        <footer class="page-footer"><span>TRILHA HTML · Material educacional independente para Design Web</span><span>HTML + CSS + JavaScript · Sem cadastro · Salvo neste navegador</span></footer>
+      </div>
+    </main>
+  </div>
+  <div id="mobile-overlay" class="mobile-overlay" hidden></div>
+  <dialog id="report-dialog" class="report-dialog" aria-labelledby="report-heading"><form method="dialog"><div class="dialog-top"><div><span class="eyebrow">RESUMO DE APRENDIZAGEM</span><h2 id="report-heading">Meu relatório</h2></div><button class="close-dialog" aria-label="Fechar relatório" value="close">×</button></div></form><div class="report-body"><p>Informe seus dados apenas se quiser incluí-los no relatório. Eles permanecem neste navegador.</p><label for="student-name">Nome do estudante</label><input id="student-name" maxlength="90" autocomplete="name" placeholder="Seu nome (opcional)"><label for="student-class">Turma</label><input id="student-class" maxlength="50" placeholder="Ex.: Design Web — Turma 1"><div id="report-summary" class="report-summary"></div><div class="report-actions"><button id="copy-report" class="btn btn-outline" type="button">Copiar resumo</button><button id="download-report" class="btn btn-primary" type="button">↓ Baixar relatório (.txt)</button></div><p id="report-note" class="report-note" role="status"></p></div></dialog>
+<script>
+/* TRILHA HTML — 24 missões. Sem dependências externas e sem backend. */
+'use strict';
+
+const MODULES = [
+  {name:'Primeiras tags', range:[1,4], icon:'✦'},
+  {name:'Links e listas', range:[5,8], icon:'↗'},
+  {name:'Mídias e conteúdos', range:[9,12], icon:'▣'},
+  {name:'HTML semântico', range:[13,16], icon:'◇'},
+  {name:'Formulários', range:[17,20], icon:'⌨'},
+  {name:'Dados e acessibilidade', range:[21,24], icon:'✓'}
+];
+
+const V = {
+  tag:(label,selector,min=1)=>({label,pass:d=>d.querySelectorAll(selector).length>=min}),
+  child:(label,parent,child,min=1)=>({label,pass:d=>[...d.querySelectorAll(parent)].some(el=>el.querySelectorAll(child).length>=min)}),
+  direct:(label,parent,child,min=1)=>({label,pass:d=>[...d.querySelectorAll(parent)].some(el=>el.querySelectorAll(`:scope > ${child}`).length>=min)}),
+  attr:(label,selector,attr,required)=>({label,pass:d=>[...d.querySelectorAll(selector)].some(el=>{const value=el.getAttribute(attr);if(value===null)return false;if(required===undefined)return value.trim().length>0;if(required instanceof RegExp)return required.test(value);return value===required;})}),
+  content:(label,selector,min=1)=>({label,pass:d=>[...d.querySelectorAll(selector)].some(el=>el.textContent.trim().length>=min)}),
+  source:(label,re)=>({label,pass:(d,s)=>re.test(s)}),
+  labels:(label,selector)=>({label,pass:d=>{const input=d.querySelector(selector);return !!(input&&input.id&&d.querySelector(`label[for="${CSS.escape(input.id)}"]`));}}),
+  hrefs:(label,parent,count)=>({label,pass:d=>{const p=d.querySelector(parent);return !!p&&p.querySelectorAll('a[href]').length>=count;}}),
+  radio:(label)=>({label,pass:d=>{const x=[...d.querySelectorAll('input[type="radio"]')];return x.length>=2&&x[0].name&&x.every(el=>el.name===x[0].name)&&new Set(x.map(el=>el.value)).size>=2;}}),
+  doc:(label,fn)=>({label,pass:fn})
+};
+const E=(concept,where,title,code,apply)=>({concept,where,title,code,apply});
+const LEVELS=[
+  {
+    title:'Sua primeira página',icon:'🚀',difficulty:'Iniciante',
+    description:'Seu portfólio está começando. Vamos criar um título e apresentar a ideia do projeto.',
+    objective:'Escreva um título principal com <h1> e um parágrafo com <p>. Os dois devem conter um texto.',
+    starter:'<!-- Apresente seu projeto -->\n',
+    solution:'<h1>Meu portfólio criativo</h1>\n<p>Aqui compartilho ideias e projetos de tecnologia.</p>',
+    hint:E('A tag <h1> representa o assunto principal da página. A tag <p> organiza um parágrafo de texto.','Você encontra essa combinação no início de portfólios, blogs e páginas de eventos.','Exemplo: apresentação de uma playlist','<h1>Playlist da semana</h1>\n<p>Uma seleção de músicas para estudar.</p>','Que título e descrição fariam sentido para o seu próprio projeto?'),
+    tests:[V.tag('Existe um título principal <h1>','h1'),V.content('O título tem conteúdo','h1',3),V.tag('Existe um parágrafo <p>','p'),V.content('O parágrafo tem conteúdo','p',8)]
+  },
+  {
+    title:'Destaque no recado',icon:'💬',difficulty:'Iniciante',
+    description:'Uma mensagem de comunidade precisa destacar uma palavra importante sem virar uma imagem.',
+    objective:'Crie um parágrafo <p> com texto e coloque uma informação importante dentro de <strong>. Adicione também um trecho em <em>.',
+    starter:'<!-- Escreva uma mensagem com ênfase -->\n<p></p>',
+    solution:'<p><strong>Atenção:</strong> inscrições abertas para a <em>maratona de projetos</em>!</p>',
+    hint:E('<strong> dá importância ao conteúdo; <em> indica ênfase. As duas tags têm significado, além da aparência padrão.','Use em alertas, avisos de comunidade, instruções e notícias.','Exemplo: aviso de atualização','<p><strong>Novidade!</strong> O aplicativo ganhou um recurso <em>muito esperado</em>.</p>','Qual parte do seu aviso merece importância e qual merece ênfase?'),
+    tests:[V.tag('Há um parágrafo','p'),V.child('O parágrafo contém <strong>','p','strong'),V.child('O parágrafo contém <em>','p','em'),V.content('O parágrafo tem conteúdo','p',12)]
+  },
+  {
+    title:'Organize o conteúdo',icon:'📚',difficulty:'Iniciante',
+    description:'O portal de um clube tem assuntos e subtópicos. Dê a cada um a hierarquia correta.',
+    objective:'Crie um <h1>, depois um <h2> e depois um <h3>, nessa ordem. Todos precisam ter texto.',
+    starter:'<!-- Organize títulos do mais importante ao mais específico -->\n',
+    solution:'<h1>Clube de tecnologia</h1>\n<h2>Projetos da comunidade</h2>\n<h3>Ideias em desenvolvimento</h3>',
+    hint:E('Os títulos vão de <h1> a <h6> e indicam a estrutura dos assuntos. Não são apenas tamanhos de fonte.','Servem para organizar artigos, documentação e páginas com seções.','Exemplo: guia de cinema','<h1>Guia de filmes</h1>\n<h2>Ficção científica</h2>\n<h3>Lançamentos</h3>','Pense em assunto principal, seção e subseção.'),
+    tests:[V.tag('Existe <h1>','h1'),V.tag('Existe <h2>','h2'),V.tag('Existe <h3>','h3'),V.content('Os três títulos têm texto','h1',2),V.doc('A hierarquia aparece na ordem h1 → h2 → h3',d=>{const h=[...d.body.querySelectorAll('h1,h2,h3')];return h.length>=3&&h[0].tagName==='H1'&&h[1].tagName==='H2'&&h[2].tagName==='H3';})]
+  },
+  {
+    title:'Projeto em destaque',icon:'🧩',difficulty:'Iniciante',
+    description:'Organize uma área da página para apresentar um projeto independente.',
+    objective:'Crie uma <section> contendo um <h2> e um <article> com um <p> de descrição.',
+    starter:'<section>\n  <!-- Título e artigo aqui -->\n</section>',
+    solution:'<section>\n  <h2>Projetos em destaque</h2>\n  <article>\n    <p>Aplicativo que ajuda a organizar tarefas de estudo.</p>\n  </article>\n</section>',
+    hint:E('<section> agrupa uma região temática; <article> representa conteúdo independente e com sentido próprio.','São comuns em listas de notícias, publicações e páginas de projetos.','Exemplo: notícias de esportes','<section>\n  <h2>Últimas notícias</h2>\n  <article>\n    <p>O time venceu a final.</p>\n  </article>\n</section>','O que é a seção e qual conteúdo pode existir como um artigo próprio?'),
+    tests:[V.tag('Há uma seção','section'),V.child('A seção contém um <h2>','section','h2'),V.child('A seção contém um <article>','section','article'),V.child('O artigo contém um parágrafo','article','p'),V.content('O parágrafo tem texto','article p',10)]
+  },
+  {
+    title:'Navegação por âncora',icon:'🧭',difficulty:'Iniciante',
+    description:'Um botão de navegação precisa levar a uma seção da própria página.',
+    objective:'Crie um link <a href="#ranking">Ver ranking</a> e uma seção <section id="ranking"> com título <h2>.',
+    starter:'<!-- Link para um trecho da própria página -->\n\n<section>\n  <h2>Ranking</h2>\n</section>',
+    solution:'<a href="#ranking">Ver ranking</a>\n<section id="ranking">\n  <h2>Ranking da semana</h2>\n</section>',
+    hint:E('Uma âncora com href="#algum-id" aponta para um elemento com id="algum-id" na mesma página.','É útil para sumários, menus de uma página e botões que saltam para formulários.','Exemplo: ir até contatos','<a href="#contatos">Fale conosco</a>\n<section id="contatos">\n  <h2>Contatos</h2>\n</section>','O valor depois de # deve ser igual ao id do destino.'),
+    tests:[V.attr('O link aponta para #ranking','a','href','#ranking'),V.content('O link tem texto','a',4),V.tag('Existe a seção de destino','section#ranking'),V.child('O destino contém um título','section#ranking','h2')]
+  },
+  {
+    title:'Link seguro para fora',icon:'🌐',difficulty:'Intermediário',
+    description:'Compartilhe um recurso educativo que abre em outra aba sem deixar boas práticas de lado.',
+    objective:'Crie um link <a> para https://developer.mozilla.org/pt-BR/docs/Web/HTML, usando target="_blank" e rel="noopener noreferrer".',
+    starter:'<!-- Link para a documentação de HTML -->\n<a>Guia de HTML</a>',
+    solution:'<a href="https://developer.mozilla.org/pt-BR/docs/Web/HTML" target="_blank" rel="noopener noreferrer">\n  Guia de HTML\n</a>',
+    hint:E('href define o destino. target="_blank" abre outra aba; rel="noopener noreferrer" acrescenta proteção e privacidade.','Use para enviar o usuário a documentação, referências e outros sites.','Exemplo: guia de CSS','<a href="https://developer.mozilla.org/pt-BR/docs/Web/CSS"\n   target="_blank"\n   rel="noopener noreferrer">\n  Aprender CSS\n</a>','Confira URL, nova aba e os dois valores de rel.'),
+    tests:[V.attr('Link com URL da documentação','a','href','https://developer.mozilla.org/pt-BR/docs/Web/HTML'),V.attr('O link abre em nova aba','a','target','_blank'),V.doc('O atributo rel inclui noopener e noreferrer',d=>{const a=d.querySelector('a');return !!a&&['noopener','noreferrer'].every(x=>(a.getAttribute('rel')||'').split(/\s+/).includes(x));}),V.content('Link com texto identificável','a',4)]
+  },
+  {
+    title:'Lista de interesses',icon:'🎧',difficulty:'Iniciante',
+    description:'A comunidade quer listar seus três assuntos favoritos.',
+    objective:'Crie uma lista não ordenada <ul> contendo pelo menos três itens <li> com texto.',
+    starter:'<!-- Assuntos que você curte -->\n',
+    solution:'<ul>\n  <li>Design de interfaces</li>\n  <li>Jogos independentes</li>\n  <li>Produção de vídeos</li>\n</ul>',
+    hint:E('<ul> representa uma lista sem ordem de prioridade; cada item é um <li>.','É comum em menus, listas de recursos e interesses de perfis.','Exemplo: materiais de estudo','<ul>\n  <li>Caderno</li>\n  <li>Notebook</li>\n  <li>Fones de ouvido</li>\n</ul>','Todos os itens devem ficar dentro da mesma lista.'),
+    tests:[V.tag('Existe lista <ul>','ul'),V.direct('A lista tem ao menos três <li> diretos','ul','li',3),V.doc('Os três itens têm texto',d=>[...d.querySelectorAll('ul > li')].filter(x=>x.textContent.trim().length>1).length>=3)]
+  },
+  {
+    title:'Top 3 da semana',icon:'🏆',difficulty:'Iniciante',
+    description:'O ranking precisa apresentar posições numeradas automaticamente.',
+    objective:'Crie uma lista ordenada <ol> com três itens <li> diferentes.',
+    starter:'<!-- Ranking de três itens -->\n',
+    solution:'<ol>\n  <li>Projeto Aurora</li>\n  <li>Projeto Pixel</li>\n  <li>Projeto Órbita</li>\n</ol>',
+    hint:E('<ol> indica que a sequência importa. O navegador numera seus itens automaticamente.','Use em rankings, etapas de tutoriais e instruções sequenciais.','Exemplo: passos de uma receita','<ol>\n  <li>Separar os ingredientes</li>\n  <li>Misturar a massa</li>\n  <li>Assar</li>\n</ol>','Qual lista faz sentido ser numerada, em vez de ter apenas marcadores?'),
+    tests:[V.tag('Existe lista <ol>','ol'),V.direct('Há pelo menos três <li> dentro de <ol>','ol','li',3),V.doc('Todos os itens têm texto',d=>[...d.querySelectorAll('ol > li')].filter(x=>x.textContent.trim().length>1).length>=3)]
+  },
+  {
+    title:'Foto do perfil',icon:'🖼️',difficulty:'Iniciante',
+    description:'Um perfil precisa de uma imagem e de uma descrição acessível.',
+    objective:'Insira <img src="assets/avatar.svg"> e escreva um atributo alt descritivo com pelo menos 12 caracteres.',
+    starter:'<div class="profile">\n  <h2>Meu perfil</h2>\n  <!-- Adicione a imagem com texto alternativo -->\n</div>',
+    solution:'<div class="profile">\n  <h2>Meu perfil</h2>\n  <img src="assets/avatar.svg" alt="Ilustração de uma pessoa em fundo azul e roxo">\n</div>',
+    hint:E('<img> exibe uma imagem. O atributo alt descreve a informação visual para leitores de tela e quando a imagem não carrega.','Imagens de produtos, avatares e fotos em notícias devem ter alternativas adequadas.','Exemplo: capa de evento','<img src="assets/capa.svg"\n     alt="Arte do evento Game Fest em fundo colorido">','Descreva o conteúdo da imagem — não escreva apenas "imagem".'),
+    tests:[V.tag('Existe uma imagem <img>','img'),V.attr('A imagem usa assets/avatar.svg','img','src','assets/avatar.svg'),V.attr('O atributo alt descreve a imagem','img','alt',/^.{12,}$/),V.doc('O texto alternativo é informativo',d=>{const a=d.querySelector('img')?.getAttribute('alt')||'';return a.length>=12&&!/^imagem\s*\d*$/i.test(a.trim());})]
+  },
+  {
+    title:'Imagem com legenda',icon:'📸',difficulty:'Intermediário',
+    description:'A galeria de trabalhos pede uma legenda vinculada à imagem.',
+    objective:'Crie <figure> contendo <img src="assets/capa.svg" alt="..."> e <figcaption> com uma legenda.',
+    starter:'<!-- Figura completa com legenda -->\n',
+    solution:'<figure>\n  <img src="assets/capa.svg" alt="Arte colorida do festival Game Fest">\n  <figcaption>Cartaz do Game Fest 2026.</figcaption>\n</figure>',
+    hint:E('<figure> reúne conteúdo visual e <figcaption> fornece a legenda associada. Alt descreve a imagem; legenda dá contexto.','É usado em notícias, portfolios, infográficos e tutoriais.','Exemplo: fotografia de perfil','<figure>\n  <img src="assets/avatar.svg" alt="Avatar ilustrado em azul">\n  <figcaption>Avatar do projeto.</figcaption>\n</figure>','A legenda deve estar dentro da figura, junto à imagem.'),
+    tests:[V.tag('Existe <figure>','figure'),V.child('A figura contém imagem','figure','img'),V.attr('A figura usa capa.svg','figure img','src','assets/capa.svg'),V.attr('A imagem tem alt descritivo','figure img','alt',/^.{10,}$/),V.child('A figura contém <figcaption>','figure','figcaption'),V.content('A legenda tem texto','figcaption',7)]
+  },
+  {
+    title:'Citação da comunidade',icon:'🗨️',difficulty:'Intermediário',
+    description:'Uma frase inspiradora será publicada como citação com sua fonte.',
+    objective:'Crie <blockquote cite="https://www.w3.org/"> com um parágrafo <p> contendo uma citação.',
+    starter:'<!-- Citação de uma fonte externa -->\n',
+    solution:'<blockquote cite="https://www.w3.org/">\n  <p>A web deve estar aberta a todas as pessoas.</p>\n</blockquote>',
+    hint:E('<blockquote> marca uma citação em bloco; cite pode indicar a URL da fonte. O texto citado pode ser colocado em <p>.','Aparece em artigos, depoimentos e matérias jornalísticas.','Exemplo: frase de uma apresentação','<blockquote cite="https://example.org/">\n  <p>Criar é experimentar novas ideias.</p>\n</blockquote>','A URL da fonte fica no atributo cite, não como uma tag solta.'),
+    tests:[V.tag('Existe um <blockquote>','blockquote'),V.attr('A fonte está em cite','blockquote','cite','https://www.w3.org/'),V.child('A citação inclui um parágrafo','blockquote','p'),V.content('A frase não está vazia','blockquote p',15)]
+  },
+  {
+    title:'Perguntas frequentes',icon:'❓',difficulty:'Intermediário',
+    description:'A seção de ajuda da comunidade precisa abrir e fechar uma resposta sem JavaScript.',
+    objective:'Use <details> contendo um <summary> com a pergunta e um <p> com a resposta.',
+    starter:'<!-- Pergunta que abre e fecha -->\n',
+    solution:'<details>\n  <summary>Como participar da comunidade?</summary>\n  <p>Crie um perfil e compartilhe seu primeiro projeto.</p>\n</details>',
+    hint:E('<details> cria uma região expansível; <summary> é a linha clicável que apresenta o resumo.','É perfeito para dúvidas frequentes e informações complementares.','Exemplo: horário de atendimento','<details>\n  <summary>Quando o evento começa?</summary>\n  <p>No sábado, às 14h.</p>\n</details>','O summary deve estar dentro de details, junto com o conteúdo a revelar.'),
+    tests:[V.tag('Existe <details>','details'),V.direct('O details possui <summary> direto','details','summary'),V.child('Há uma resposta em <p>','details','p'),V.content('A pergunta tem texto','summary',8),V.content('A resposta tem texto','details p',12)]
+  },
+  {
+    title:'Cabeçalho e menu',icon:'🧭',difficulty:'Intermediário',
+    description:'Uma comunidade digital precisa de cabeçalho e navegação com links.',
+    objective:'Crie <header> com um <strong> para o nome da comunidade e um <nav> contendo pelo menos três links <a href="...">.',
+    starter:'<header>\n  <!-- Nome do site e links -->\n</header>',
+    solution:'<header>\n  <strong>Comunidade Pixel</strong>\n  <nav>\n    <a href="#inicio">Início</a>\n    <a href="#projetos">Projetos</a>\n    <a href="#contato">Contato</a>\n  </nav>\n</header>',
+    hint:E('<header> define a região de cabeçalho. <nav> identifica os principais links de navegação.','Cabeçalhos e menus estão presentes em portais, blogs e aplicativos web.','Exemplo: loja virtual','<header>\n  <strong>Loja Criativa</strong>\n  <nav>\n    <a href="#colecao">Coleção</a>\n    <a href="#ofertas">Ofertas</a>\n  </nav>\n</header>','Os links da navegação devem ficar dentro do nav.'),
+    tests:[V.tag('Existe cabeçalho <header>','header'),V.child('O cabeçalho tem nome do site','header','strong'),V.child('O cabeçalho tem <nav>','header','nav'),V.hrefs('O menu possui três links com destino','header nav',3),V.doc('Os links apresentam textos',d=>[...d.querySelectorAll('header nav a')].filter(a=>a.textContent.trim().length>1).length>=3)]
+  },
+  {
+    title:'Conteúdo principal',icon:'🗂️',difficulty:'Intermediário',
+    description:'O conteúdo central da página precisa estar separado das regiões auxiliares.',
+    objective:'Crie uma região <main> com uma <section id="projetos"> contendo <h2> e <p>.',
+    starter:'<!-- Conteúdo principal do site -->\n',
+    solution:'<main>\n  <section id="projetos">\n    <h2>Projetos recentes</h2>\n    <p>Conheça ideias feitas pelos estudantes.</p>\n  </section>\n</main>',
+    hint:E('<main> identifica o conteúdo dominante da página. <section> agrupa assuntos relacionados.','Essa estrutura ajuda leitores de tela e organiza blogs, portais e páginas institucionais.','Exemplo: agenda cultural','<main>\n  <section id="agenda">\n    <h2>Agenda</h2>\n    <p>Veja os próximos eventos.</p>\n  </section>\n</main>','main envolve a área central, e section descreve um assunto dentro dela.'),
+    tests:[V.tag('Existe <main>','main'),V.child('O conteúdo principal tem a seção #projetos','main','section#projetos'),V.child('A seção possui título','section#projetos','h2'),V.child('A seção possui parágrafo','section#projetos','p'),V.content('O parágrafo não está vazio','section#projetos p',10)]
+  },
+  {
+    title:'Publicação com data',icon:'📰',difficulty:'Intermediário',
+    description:'Uma postagem deve informar título, resumo e data de publicação de modo semântico.',
+    objective:'Crie um <article> com <h2>, <p> e <time datetime="2026-11-11"> exibindo uma data legível.',
+    starter:'<!-- Nova publicação do portal -->\n',
+    solution:'<article>\n  <h2>Projetos que inspiram</h2>\n  <p>Uma seleção de ideias criadas na comunidade.</p>\n  <time datetime="2026-11-11">11 de novembro de 2026</time>\n</article>',
+    hint:E('<article> é conteúdo independente. <time datetime> contém uma data que computadores conseguem interpretar.','Use em notícias, postagens, eventos e publicações de blogs.','Exemplo: evento próximo','<article>\n  <h2>Encontro de criadores</h2>\n  <p>Uma tarde de oficinas.</p>\n  <time datetime="2026-12-05">5 de dezembro</time>\n</article>','A data legível vai entre as tags time; o formato padronizado vai em datetime.'),
+    tests:[V.tag('Existe <article>','article'),V.child('O artigo possui <h2>','article','h2'),V.child('O artigo possui <p>','article','p'),V.attr('A data possui datetime correto','article time','datetime','2026-11-11'),V.content('A data tem texto para pessoas','article time',6)]
+  },
+  {
+    title:'Rodapé e conteúdos extras',icon:'🧱',difficulty:'Intermediário',
+    description:'Além da área principal, um site pode apresentar informações complementares e um rodapé.',
+    objective:'Crie um <aside> com um <h2> e um <p>, seguido por <footer> com um <p>.',
+    starter:'<!-- Informações secundárias e rodapé -->\n',
+    solution:'<aside>\n  <h2>Dica de estudo</h2>\n  <p>Reserve alguns minutos para revisar suas tags.</p>\n</aside>\n<footer>\n  <p>© 2026 Comunidade Pixel</p>\n</footer>',
+    hint:E('<aside> contém informação complementar; <footer> apresenta informações finais da página ou de uma seção.','Exemplos são barras de sugestões, links relacionados, direitos autorais e contatos.','Exemplo: portal de notícias','<aside>\n  <h2>Leia também</h2>\n  <p>Conheça outras matérias.</p>\n</aside>\n<footer>\n  <p>Portal da Escola · 2026</p>\n</footer>','O rodapé vem depois do conteúdo complementar.'),
+    tests:[V.tag('Existe um <aside>','aside'),V.child('O aside contém título','aside','h2'),V.child('O aside contém parágrafo','aside','p'),V.tag('Existe um <footer>','footer'),V.child('O footer contém parágrafo','footer','p'),V.doc('O footer aparece após o aside',d=>{const a=d.querySelector('aside'),f=d.querySelector('footer');return !!(a&&f&&(a.compareDocumentPosition(f)&Node.DOCUMENT_POSITION_FOLLOWING));})]
+  },
+  {
+    title:'Campo com etiqueta',icon:'⌨️',difficulty:'Intermediário',
+    description:'Uma tela de cadastro precisa ligar o texto da etiqueta ao campo correspondente.',
+    objective:'Crie <label for="apelido">Apelido</label> e <input id="apelido" name="apelido" type="text"> dentro de <form>.',
+    starter:'<form>\n  <!-- Nome do campo e entrada -->\n</form>',
+    solution:'<form>\n  <label for="apelido">Apelido</label>\n  <input id="apelido" name="apelido" type="text">\n</form>',
+    hint:E('<label for> associa uma legenda a um campo que possua o mesmo id, melhorando usabilidade e acessibilidade.','Use em logins, inscrições e formulários de contato.','Exemplo: campo de cidade','<form>\n  <label for="cidade">Cidade</label>\n  <input type="text" id="cidade" name="cidade">\n</form>','O for da etiqueta e o id do campo devem coincidir.'),
+    tests:[V.tag('Existe formulário','form'),V.child('O formulário tem label','form','label'),V.child('O formulário tem input','form','input'),V.attr('Label aponta para apelido','form label','for','apelido'),V.attr('Input tem id apelido','form input','id','apelido'),V.attr('Input tem name apelido','form input','name','apelido'),V.attr('Input é do tipo texto','form input','type','text')]
+  },
+  {
+    title:'E-mail obrigatório',icon:'✉️',difficulty:'Intermediário',
+    description:'A inscrição no evento deve pedir um endereço de e-mail válido.',
+    objective:'Dentro de <form>, adicione <label> ligado ao campo e um <input type="email" id="email" name="email" required>.',
+    starter:'<form>\n  <!-- Campo de e-mail obrigatório -->\n</form>',
+    solution:'<form>\n  <label for="email">Seu e-mail</label>\n  <input type="email" id="email" name="email" required>\n</form>',
+    hint:E('type="email" pede um e-mail e habilita verificações nativas do navegador. required torna o preenchimento obrigatório.','Use em newsletters, cadastro de eventos e acesso a serviços.','Exemplo: telefone obrigatório','<form>\n  <label for="tel">Telefone</label>\n  <input type="tel" id="tel" name="tel" required>\n</form>','O campo precisa do tipo correto, do atributo required e de uma etiqueta associada.'),
+    tests:[V.tag('Existe formulário','form'),V.attr('Existe input type=email','form input','type','email'),V.attr('O campo tem id email','input[type="email"]','id','email'),V.attr('O campo tem name email','input[type="email"]','name','email'),V.tag('O input é obrigatório','input[type="email"][required]'),V.labels('Existe uma etiqueta ligada ao e-mail','input[type="email"]')]
+  },
+  {
+    title:'Escolha seu tema',icon:'🎯',difficulty:'Intermediário',
+    description:'O estudante escolherá uma área de interesse em um campo de seleção.',
+    objective:'Crie <label for="tema">, <select id="tema" name="tema"> e pelo menos três <option value="..."> com texto.',
+    starter:'<form>\n  <!-- Selecione uma área de interesse -->\n</form>',
+    solution:'<form>\n  <label for="tema">Área favorita</label>\n  <select id="tema" name="tema">\n    <option value="design">Design</option>\n    <option value="games">Games</option>\n    <option value="codigo">Programação</option>\n  </select>\n</form>',
+    hint:E('<select> apresenta opções. Cada <option> tem um value para sistemas e um texto para a pessoa.','Útil em filtros, cadastros, escolhas de categoria e formulários de pesquisa.','Exemplo: escolha do turno','<label for="turno">Turno</label>\n<select id="turno" name="turno">\n  <option value="manha">Manhã</option>\n  <option value="tarde">Tarde</option>\n  <option value="noite">Noite</option>\n</select>','As opções devem estar dentro do select e com valores preenchidos.'),
+    tests:[V.tag('Existe <select id=tema>','select#tema'),V.attr('O select tem name tema','select#tema','name','tema'),V.labels('Existe label associado ao select','select#tema'),V.direct('Há três opções no select','select#tema','option',3),V.doc('As três opções têm valores e textos',d=>[...d.querySelectorAll('#tema > option')].filter(x=>x.getAttribute('value')?.trim()&&x.textContent.trim()).length>=3)]
+  },
+  {
+    title:'Enquete organizada',icon:'📊',difficulty:'Avançado',
+    description:'Uma enquete precisa agrupar opções com o mesmo nome para permitir apenas uma escolha.',
+    objective:'Crie <fieldset> com <legend> e dois <label>, cada um contendo <input type="radio"> com o mesmo name e value diferente.',
+    starter:'<form>\n  <!-- Pergunta e duas alternativas -->\n</form>',
+    solution:'<form>\n  <fieldset>\n    <legend>Qual tema você prefere?</legend>\n    <label><input type="radio" name="tema" value="html"> HTML</label>\n    <label><input type="radio" name="tema" value="css"> CSS</label>\n  </fieldset>\n</form>',
+    hint:E('<fieldset> agrupa campos relacionados, e <legend> nomeia o grupo. Rádios com o mesmo name fazem parte da mesma escolha.','Use em questionários, avaliações e formulários de preferência.','Exemplo: enquete de horário','<fieldset>\n  <legend>Quando estudar?</legend>\n  <label><input type="radio" name="horario" value="dia"> Dia</label>\n  <label><input type="radio" name="horario" value="noite"> Noite</label>\n</fieldset>','Confira se os rádios compartilham o mesmo name e têm values diferentes.'),
+    tests:[V.tag('Existe <fieldset>','fieldset'),V.child('O grupo tem <legend>','fieldset','legend'),V.content('A legenda tem texto','legend',8),V.child('O grupo inclui duas etiquetas','fieldset','label',2),V.child('Existem dois rádios dentro do grupo','fieldset','input[type="radio"]',2),V.radio('Rádios compartilham name e têm values diferentes'),V.doc('Cada rádio está associado a um label',d=>{const a=[...d.querySelectorAll('fieldset input[type="radio"]')];return a.length>=2&&a.every(x=>!!x.closest('label')||(!!x.id&&!!d.querySelector(`label[for="${CSS.escape(x.id)}"]`)));})]
+  },
+  {
+    title:'Tabela de pontuações',icon:'🏅',difficulty:'Intermediário',
+    description:'O ranking da turma precisa apresentar dados de maneira tabular.',
+    objective:'Crie <table> com uma linha <tr> contendo dois <th> (Nome e Pontos) e mais duas linhas <tr> com duas células <td> cada.',
+    starter:'<!-- Ranking em formato de tabela -->\n',
+    solution:'<table>\n  <tr>\n    <th>Nome</th>\n    <th>Pontos</th>\n  </tr>\n  <tr><td>Ana</td><td>120</td></tr>\n  <tr><td>Caio</td><td>100</td></tr>\n</table>',
+    hint:E('<table> estrutura dados em linhas (<tr>). <th> define cabeçalhos e <td> representa valores.','É apropriada para horários, comparativos, notas e resultados. Não use tabelas para diagramar a página.','Exemplo: tabela de horários','<table>\n  <tr><th>Dia</th><th>Hora</th></tr>\n  <tr><td>Segunda</td><td>14h</td></tr>\n  <tr><td>Terça</td><td>16h</td></tr>\n</table>','Pense em duas colunas e três linhas, incluindo o cabeçalho.'),
+    tests:[V.tag('Existe uma tabela','table'),V.child('A tabela tem três linhas','table','tr',3),V.child('Há pelo menos dois cabeçalhos','table','th',2),V.child('Há quatro células de dados','table','td',4),V.doc('Cada linha de dados tem duas células',d=>[...d.querySelectorAll('table tr')].filter(tr=>tr.querySelectorAll(':scope > td').length>=2).length>=2)]
+  },
+  {
+    title:'Tabela acessível',icon:'📋',difficulty:'Avançado',
+    description:'Organize uma tabela com título, cabeçalho e corpo para facilitar sua interpretação.',
+    objective:'Crie <table> com <caption>, <thead> contendo dois <th scope="col"> e <tbody> com pelo menos uma linha e duas células <td>.',
+    starter:'<!-- Tabela organizada semanticamente -->\n',
+    solution:'<table>\n  <caption>Projetos inscritos</caption>\n  <thead>\n    <tr><th scope="col">Projeto</th><th scope="col">Equipe</th></tr>\n  </thead>\n  <tbody>\n    <tr><td>EcoApp</td><td>Equipe Azul</td></tr>\n  </tbody>\n</table>',
+    hint:E('<caption> dá um nome à tabela; <thead> separa cabeçalhos de <tbody>; scope="col" identifica cabeçalhos de colunas.','Use quando uma tabela precisa ser entendida por pessoas e por tecnologias assistivas.','Exemplo: boletim de livros','<table>\n  <caption>Livros da biblioteca</caption>\n  <thead>\n    <tr><th scope="col">Título</th><th scope="col">Autor</th></tr>\n  </thead>\n  <tbody>\n    <tr><td>Viagem espacial</td><td>Luiza</td></tr>\n  </tbody>\n</table>','Organize cabeçalhos e dados em regiões diferentes da tabela.'),
+    tests:[V.tag('Existe <table>','table'),V.child('Há título da tabela (<caption>)','table','caption'),V.child('Há seção de cabeçalho (<thead>)','table','thead'),V.source('O HTML contém <tbody> explicitamente',/<tbody\b/i),V.child('O cabeçalho tem dois th scope=col','table thead','th[scope="col"]',2),V.child('O corpo tem duas células de dados','table tbody','td',2)]
+  },
+  {
+    title:'Botão acessível',icon:'❤️',difficulty:'Avançado',
+    description:'Um botão só com ícone precisa comunicar sua finalidade para quem utiliza leitor de tela.',
+    objective:'Crie <button type="button" aria-label="Adicionar aos favoritos"> contendo um símbolo de coração (♥ ou ❤️).',
+    starter:'<!-- Botão de favoritar -->\n',
+    solution:'<button type="button" aria-label="Adicionar aos favoritos">❤️</button>',
+    hint:E('<button> descreve uma ação. Para botões só com ícone, aria-label oferece um nome acessível. type="button" evita submissão acidental em formulários.','Use em botões de favoritar, compartilhar, fechar janelas e abrir menus.','Exemplo: abrir busca','<button type="button" aria-label="Abrir busca">🔎</button>','O rótulo acessível deve dizer o que a ação faz, não apenas o nome do ícone.'),
+    tests:[V.tag('Existe <button>','button'),V.attr('O botão tem type=button','button','type','button'),V.attr('O botão explica a ação em aria-label','button','aria-label','Adicionar aos favoritos'),V.doc('O botão mostra um coração',d=>/♥|❤|❤️/.test(d.querySelector('button')?.textContent||''))]
+  },
+  {
+    title:'Página completa',icon:'🏁',difficulty:'Avançado',
+    description:'Chegou a missão final! Construa uma página HTML com os principais elementos semânticos e metadados.',
+    objective:'Crie um documento completo com <!doctype html>, <html lang="pt-BR">, <head> (charset, viewport e title) e <body> com header/nav, main/h1/section/h2 e footer.',
+    starter:'<!doctype html>\n<html lang="pt-BR">\n<head>\n  <!-- Metadados da página -->\n</head>\n<body>\n  <!-- Cabeçalho, conteúdo principal e rodapé -->\n</body>\n</html>',
+    solution:'<!doctype html>\n<html lang="pt-BR">\n<head>\n  <meta charset="UTF-8">\n  <meta name="viewport" content="width=device-width, initial-scale=1">\n  <title>Meu site de projetos</title>\n</head>\n<body>\n  <header>\n    <nav><a href="#projetos">Projetos</a></nav>\n  </header>\n  <main>\n    <h1>Meu portfólio</h1>\n    <section id="projetos">\n      <h2>O que estou criando</h2>\n      <p>Conheça minhas ideias e experiências.</p>\n    </section>\n  </main>\n  <footer><p>© 2026 Meu portfólio</p></footer>\n</body>\n</html>',
+    hint:E('Um documento completo separa configurações (<head>) do conteúdo visível (<body>). Tags semânticas organizam cada região.','Todos os sites partem dessa estrutura, mesmo quando utilizam ferramentas e frameworks.','Exemplo: esqueleto de uma página de evento','<!doctype html>\n<html lang="pt-BR">\n<head>\n  <meta charset="UTF-8">\n  <meta name="viewport" content="width=device-width, initial-scale=1">\n  <title>Agenda de eventos</title>\n</head>\n<body>\n  <header><nav><a href="#agenda">Agenda</a></nav></header>\n  <main>\n    <h1>Encontros da cidade</h1>\n    <section id="agenda"><h2>Próximas datas</h2></section>\n  </main>\n  <footer><p>Agenda 2026</p></footer>\n</body>\n</html>','Para concluir, verifique primeiro o head e depois as regiões semânticas do body.'),
+    tests:[V.source('O documento começa com <!doctype html>',/^\s*<!doctype\s+html\s*>/i),V.source('Você escreveu <head> e <body>',/<head\b[^>]*>[\s\S]*<\/head>\s*<body\b[^>]*>[\s\S]*<\/body>/i),V.source('O elemento html declara pt-BR',/<html\b[^>]*\blang\s*=\s*["']pt-BR["']/i),V.attr('Charset UTF-8 está no head','head meta[charset]','charset',/^utf-8$/i),V.tag('Existe meta viewport','head meta[name="viewport"][content]'),V.content('Existe título da aba (<title>)','head title',5),V.child('O body contém header','body','header'),V.child('Existe nav dentro do header','body header','nav'),V.child('O body contém main','body','main'),V.child('O main contém h1','body main','h1'),V.child('O main contém section com h2','body main','section h2'),V.child('O body contém footer','body','footer')]
+  }
+];
+
+const PREVIEW_STYLE = `
+:root{color-scheme:light}*{box-sizing:border-box}body{margin:0;background:#f4f7fb;color:#1c2940;font:15px/1.6 system-ui,-apple-system,'Segoe UI',sans-serif} .screen{padding:24px;min-height:100vh}
+h1,h2,h3,p{margin:0 0 12px}h1{font-size:clamp(24px,5vw,32px);color:#1c2a4d}h2{font-size:21px;color:#283b64}h3{font-size:17px;color:#345075}p{font-size:14px}strong{font-weight:750}em{color:#5d3fa8}
+a{color:#2952c9;text-decoration:underline;text-underline-offset:3px}header{background:#e3ebfa;border-radius:12px;padding:16px 18px;margin-bottom:18px}header nav{display:flex;gap:14px;flex-wrap:wrap;margin-top:9px}nav a{font-weight:650;font-size:14px}
+main{margin:0 0 18px}section{padding:16px;margin-bottom:14px;border:1px solid #d9e3f3;border-radius:12px;background:#fff}article{background:#edf2fb;border-left:4px solid #6287db;padding:13px 16px;border-radius:9px;margin:10px 0}aside{background:#fff9e8;border:1px solid #efdba3;padding:15px;border-radius:12px;margin-bottom:16px}footer{background:#dde8ee;padding:15px;border-radius:9px;color:#4d6070;font-size:13px}
+.profile{display:flex;flex-direction:column;align-items:flex-start;gap:12px;padding:18px;background:white;border:1px solid #dbe3f1;border-radius:16px}img{display:block;max-width:100%;height:auto;border-radius:11px} .profile img{width:116px;height:116px;object-fit:cover}figure{margin:0;padding:12px;border:1px solid #d9e3f1;border-radius:12px;background:white;max-width:600px}figure img{width:100%;height:auto}figcaption{margin-top:10px;color:#4a5d79;font-size:13px}
+ul,ol{margin:10px 0;padding:13px 13px 13px 36px;background:#fff;border:1px solid #dbe3f1;border-radius:11px}li{padding:3px 0}blockquote{border-left:5px solid #8d72e5;background:#f0eafc;margin:0;padding:17px 20px;border-radius:8px}details{padding:15px;background:white;border:1px solid #d8e3f1;border-radius:11px}summary{font-weight:700;cursor:pointer;color:#2458a3}details p{margin:10px 0 0}
+form{padding:18px;background:#fff;border:1px solid #d9e3f1;border-radius:13px;max-width:550px}label{display:block;margin:11px 0 5px;font-size:14px;font-weight:650}input,select{width:100%;border:1px solid #a7b9d0;background:#f9fbff;border-radius:8px;padding:11px;color:#243b56;font:inherit;margin-bottom:8px}input[type=radio],input[type=checkbox]{width:auto;margin:0 7px 0 0}label:has(input[type=radio]){display:flex;align-items:center;font-weight:400;margin:10px 0}fieldset{border:1px solid #bccce1;border-radius:10px;padding:13px 15px}legend{font-weight:800;color:#253b5a;padding:0 8px}button{border:0;background:#4f46e5;color:white;padding:12px 17px;border-radius:10px;font-size:16px;cursor:pointer}
+table{border-collapse:collapse;width:100%;max-width:620px;background:white;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px #233a5718}caption{padding:8px;font-weight:800;background:#e7eefb}th,td{padding:11px 14px;border:1px solid #dbe3ee;text-align:left;font-size:14px}th{background:#dee9ff;color:#203864}tr:nth-child(even) td{background:#f7f9fc}time{color:#5c6980;font-size:13px}
+`; 
+const ASSET_SVGS = {
+  'assets/avatar.svg':'<svg xmlns="http://www.w3.org/2000/svg" width="240" height="240" viewBox="0 0 240 240"><defs><linearGradient id="a" x2="1" y2="1"><stop stop-color="#4f46e5"/><stop offset="1" stop-color="#06b6d4"/></linearGradient></defs><rect width="240" height="240" rx="32" fill="url(#a)"/><circle cx="120" cy="88" r="45" fill="#fff" opacity=".9"/><path d="M32 222c8-56 41-85 88-85s80 29 88 85" fill="#fff" opacity=".85"/></svg>',
+  'assets/capa.svg':'<svg xmlns="http://www.w3.org/2000/svg" width="720" height="360" viewBox="0 0 720 360"><rect width="720" height="360" rx="25" fill="#5943bd"/><circle cx="545" cy="130" r="110" fill="#ffffff" opacity=".14"/><path d="M0 343L176 146 313 290 424 193 560 360" stroke="#b8ffff" stroke-width="18" opacity=".7" fill="none"/><text x="55" y="105" font-family="Arial" font-weight="800" font-size="48" fill="white">GAME FEST</text><text x="56" y="145" font-family="Arial" font-size="23" fill="#d1f7f8">Festival de criatividade</text></svg>'
+};
+const $=id=>document.getElementById(id);
+const ui={
+  nav:$('level-nav'),editor:$('html-editor'),feedback:$('feedback'),hint:$('hint-box'),frame:$('preview-frame'),viewport:$('preview-viewport'),
+  next:$('next-btn'),solve:$('solution-btn'),hintBtn:$('hint-btn'),check:$('check-btn'),status:$('preview-status'),
+  report:$('report-dialog'),reportSummary:$('report-summary'),reportNote:$('report-note')
+};
+const STORAGE_KEY='trilha-html-designweb-v1';
+const storageRead=()=>{try{const v=JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}');return v&&typeof v==='object'?v:{}}catch{return {}}};
+let saved=storageRead();
+let current=Math.min(Math.max(0,Number(saved.current)||0),LEVELS.length-1);
+let currentWidth='desktop';
+let previewTimer;
+let hintOpen=false;
+let solutionOpen=false;
+const record=i=>saved[`level${i}`]||(saved[`level${i}`]={});
+const store=()=>{try{localStorage.setItem(STORAGE_KEY,JSON.stringify(saved))}catch{}};
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const cleanHTML=code=>{
+  const d=new DOMParser().parseFromString(code,'text/html');
+  d.body.querySelectorAll('script,style,iframe,object,embed,link,meta,base,svg,math').forEach(el=>el.remove());
+  d.body.querySelectorAll('*').forEach(el=>{
+    [...el.attributes].forEach(a=>{
+      const key=a.name.toLowerCase();
+      if(key.startsWith('on')||['srcdoc','srcset','action','formaction'].includes(key))el.removeAttribute(a.name);
+      if(['href','src','poster','cite'].includes(key) && /^(?:javascript:|vbscript:|data:text\/html)/i.test(a.value.trim()))el.removeAttribute(a.name);
+    });
+    if(el.tagName==='IMG'){
+      const path=el.getAttribute('src');
+      if(path&&ASSET_SVGS[path])el.setAttribute('src','data:image/svg+xml;charset=utf-8,'+encodeURIComponent(ASSET_SVGS[path]));
+    }
+  });
+  return d.body.innerHTML;
+};
+const previewDoc=code=>'<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src \'none\'; img-src data:; style-src \'unsafe-inline\'; form-action \'none\'"><style>'+PREVIEW_STYLE+'</style></head><body><div class="screen">'+cleanHTML(code)+'</div></body></html>';
+function updatePreview(){ui.frame.srcdoc=previewDoc(ui.editor.value);ui.status.textContent='PRÉVIA AO VIVO';}
+function updateProgress(){
+  const solved=LEVELS.filter((_,i)=>record(i).solved).length;
+  $('progress-label').textContent=`${solved} / ${LEVELS.length}`;
+  $('progress-pct').textContent=`${Math.round(solved/LEVELS.length*100)}% concluído`;
+  $('progress-fill').style.width=`${(solved/LEVELS.length*100).toFixed(2)}%`;
+  $('xp-count').textContent=`${solved*100} XP`;
+}
+function renderNav(){
+  ui.nav.innerHTML='';
+  MODULES.forEach((m,mi)=>{
+    const section=document.createElement('div');section.className='module-group';
+    const title=document.createElement('div');title.className='module-name';title.textContent=`${String(mi+1).padStart(2,'0')}  ${m.name}`;section.appendChild(title);
+    for(let n=m.range[0];n<=m.range[1];n++){
+      const i=n-1,l=LEVELS[i],r=record(i),btn=document.createElement('button');
+      btn.type='button';btn.className='level-link'+(i===current?' active':'')+(r.solved?' done':'');
+      btn.setAttribute('aria-current',i===current?'step':'false');
+      btn.innerHTML=`<span class="level-number">${String(n).padStart(2,'0')}</span><span class="level-title">${esc(l.title)}</span><span class="level-check">${r.solved?'✓':''}</span>`;
+      btn.addEventListener('click',()=>openLevel(i));section.appendChild(btn);
+    }
+    ui.nav.appendChild(section);
+  });
+}
+function clearFeedback(){ui.feedback.hidden=true;ui.feedback.className='feedback';ui.feedback.textContent='';}
+function renderHint(){
+  ui.hint.hidden=!hintOpen;
+  ui.hintBtn.setAttribute('aria-expanded',String(hintOpen));
+  if(!hintOpen)return;
+  const h=LEVELS[current].hint;
+  ui.hint.innerHTML=`<h3 class="hint-heading">💡 Entenda antes de tentar</h3><p class="hint-concept">${esc(h.concept)}</p><p class="hint-label">ONDE SE USA</p><p class="hint-use">${esc(h.where)}</p><p class="hint-label">EXEMPLO PRÁTICO</p><h4 class="hint-example-title">${esc(h.title)}</h4><div class="hint-snippets"><div class="hint-snippet"><div class="hint-code-label">HTML</div><pre><code></code></pre></div></div><p class="hint-label hint-live-label">RESULTADO VISUAL</p><iframe class="hint-example-preview" title="Exemplo visual do conceito HTML" sandbox=""></iframe><p class="hint-apply"><strong>Agora pense:</strong> ${esc(h.apply)}</p><p class="hint-note">Este exemplo usa outro contexto e não entrega o código da missão.</p>`;
+  ui.hint.querySelector('code').textContent=h.code;
+  ui.hint.querySelector('iframe').srcdoc=previewDoc(h.code);
+}
+function renderSolution(){
+  let solution=$('solution-box');if(solution)solution.remove();
+  if(!solutionOpen)return;
+  solution=document.createElement('div');solution.id='solution-box';solution.className='solution-box';
+  solution.innerHTML='<h3>✓ Uma solução possível</h3><pre><code></code></pre><p>A solução é uma referência de estudo. Experimente reescrevê-la para entender a função de cada tag.</p>';
+  solution.querySelector('code').textContent=LEVELS[current].solution;
+  ui.solve.insertAdjacentElement('afterend',solution);
+}
+function openLevel(i){
+  current=i;saved.current=current;store();const l=LEVELS[i],r=record(i);
+  const mi=MODULES.findIndex(m=>i+1>=m.range[0]&&i+1<=m.range[1]);
+  $('breadcrumb-module').textContent=MODULES[mi].name;
+  $('level-count').textContent=`DESAFIO ${String(i+1).padStart(2,'0')} DE ${LEVELS.length}`;
+  $('level-pill').textContent=`NÍVEL ${String(i+1).padStart(2,'0')}`;
+  $('difficulty').textContent=l.difficulty.toUpperCase();
+  $('challenge-heading').textContent=l.title;
+  $('challenge-description').textContent=l.description;
+  $('challenge-objective').textContent=l.objective;
+  $('mission-icon').textContent=l.icon;
+  ui.editor.value=typeof r.code==='string'?r.code:l.starter;
+  $('solved-badge').hidden=!r.solved;
+  ui.next.hidden=!(r.solved&&i<LEVELS.length-1);
+  const details=$('html-source');details.textContent='Os critérios são:\n'+l.tests.map((t,j)=>`${j+1}. ${t.label}`).join('\n');
+  hintOpen=false;solutionOpen=false;renderHint();renderSolution();clearFeedback();updatePreview();renderNav();updateProgress();
+  $('sidebar').classList.remove('open');$('mobile-overlay').hidden=true;$('mobile-menu').setAttribute('aria-expanded','false');
+}
+function checkCurrent(){
+  const l=LEVELS[current],r=record(current),source=ui.editor.value;
+  const doc=new DOMParser().parseFromString(source,'text/html');
+  const results=l.tests.map(t=>{let ok=false;try{ok=Boolean(t.pass(doc,source))}catch{}return{label:t.label,ok}});
+  const passed=results.filter(x=>x.ok).length,failed=results.filter(x=>!x.ok);
+  ui.feedback.hidden=false;
+  if(!failed.length){
+    r.solved=true;r.code=source;store();ui.feedback.className='feedback success';
+    ui.feedback.innerHTML=`<strong>✅ Missão concluída! +100 XP</strong><span>Você cumpriu ${passed} de ${results.length} critérios. Ótimo trabalho! ${r.solutionUsed?'(A solução foi consultada neste nível.)':''}</span>`;
+    $('solved-badge').hidden=false;ui.next.hidden=current===LEVELS.length-1;updateProgress();renderNav();
+  }else{
+    ui.feedback.className='feedback error';
+    ui.feedback.innerHTML=`<strong>${passed}/${results.length} critérios atendidos</strong><p>Seu código está no caminho. Revise os itens abaixo:</p><ul>${failed.map(x=>`<li>${esc(x.label)}</li>`).join('')}</ul>`;
+    ui.next.hidden=true;
+  }
+  ui.feedback.scrollIntoView({block:'nearest',behavior:'smooth'});
+}
+function buildReport(){
+  const name=$('student-name').value.trim()||'Não informado';
+  const cls=$('student-class').value.trim()||'Não informada';
+  const completed=LEVELS.map((l,i)=>({...l,index:i,...record(i)})).filter(x=>x.solved);
+  const today=new Date().toLocaleDateString('pt-BR');
+  const text=[
+    'TRILHA HTML — RELATÓRIO DE APRENDIZAGEM',
+    `Estudante: ${name}`,`Turma: ${cls}`,`Emissão: ${today}`,
+    `Concluídos: ${completed.length}/${LEVELS.length} • XP: ${completed.length*100}`,
+    '', 'MISSÕES',
+    ...LEVELS.map((l,i)=>`${String(i+1).padStart(2,'0')}. ${l.title} — ${record(i).solved?'CONCLUÍDA':'PENDENTE'}${record(i).hintUsed?' • Dica consultada':''}${record(i).solutionUsed?' • Solução consultada':''}`),
+    '', 'Observação: a conclusão foi registrada neste navegador e não equivale a autenticação de identidade nem a prova supervisionada.'
+  ].join('\n');
+  return{text,completed};
+}
+function showReport(){const result=buildReport();ui.reportSummary.innerHTML=`<b>${result.completed.length} de ${LEVELS.length} desafios concluídos · ${result.completed.length*100} XP</b><ul>${MODULES.map(m=>{const count=LEVELS.slice(m.range[0]-1,m.range[1]).filter((_,j)=>record(m.range[0]-1+j).solved).length;return `<li>${esc(m.name)} — ${count}/4</li>`}).join('')}</ul>`;
+  ui.reportNote.textContent='';
+  if(typeof ui.report.showModal==='function')ui.report.showModal();else ui.report.setAttribute('open','');
+}
+ui.editor.addEventListener('input',()=>{
+  const r=record(current);r.code=ui.editor.value;
+  store();clearTimeout(previewTimer);previewTimer=setTimeout(updatePreview,170);
+  if(!ui.feedback.hidden)clearFeedback();
+});
+ui.editor.addEventListener('keydown',e=>{
+  if((e.ctrlKey||e.metaKey)&&e.key==='Enter'){e.preventDefault();checkCurrent()}
+  if(e.key==='Tab'){e.preventDefault();const a=ui.editor.selectionStart,b=ui.editor.selectionEnd;ui.editor.setRangeText('  ',a,b,'end');ui.editor.dispatchEvent(new Event('input',{bubbles:true}))}
+});
+ui.check.addEventListener('click',checkCurrent);
+ui.hintBtn.addEventListener('click',()=>{hintOpen=!hintOpen;if(hintOpen)record(current).hintUsed=true;store();renderHint()});
+ui.solve.addEventListener('click',()=>{
+  if(!solutionOpen&&!confirm('Deseja realmente consultar a solução? Tente resolver com a dica primeiro.'))return;
+  solutionOpen=!solutionOpen;if(solutionOpen)record(current).solutionUsed=true;store();renderSolution();
+});
+ui.next.addEventListener('click',()=>{if(current<LEVELS.length-1)openLevel(current+1)});
+$('desktop-view').addEventListener('click',()=>{currentWidth='desktop';ui.viewport.classList.remove('mobile');$('desktop-view').setAttribute('aria-pressed','true');$('mobile-view').setAttribute('aria-pressed','false');$('preview-size').textContent='DESKTOP'});
+$('mobile-view').addEventListener('click',()=>{currentWidth='mobile';ui.viewport.classList.add('mobile');$('mobile-view').setAttribute('aria-pressed','true');$('desktop-view').setAttribute('aria-pressed','false');$('preview-size').textContent='360 PX'});
+$('report-btn').addEventListener('click',showReport);
+$('copy-report').addEventListener('click',async()=>{
+  try{await navigator.clipboard.writeText(buildReport().text);ui.reportNote.textContent='Resumo copiado.'}
+  catch{ui.reportNote.textContent='Não foi possível copiar automaticamente; utilize a opção de baixar.'}
+});
+$('download-report').addEventListener('click',()=>{
+  const name=($('student-name').value||'estudante').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-zA-Z0-9-]+/g,'_').slice(0,50);
+  const blob=new Blob(['\ufeff',buildReport().text],{type:'text/plain;charset=utf-8'});
+  const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=`trilha-html-${name}.txt`;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),3000);
+  ui.reportNote.textContent='Relatório gerado com os dados deste navegador.';
+});
+$('reset-progress').addEventListener('click',()=>{
+  if(!confirm('Reiniciar todo o progresso da Trilha HTML neste navegador? Esta ação não pode ser desfeita.'))return;
+  saved={};store();openLevel(0);
+});
+$('mobile-menu').addEventListener('click',()=>{const open=!$('sidebar').classList.contains('open');$('sidebar').classList.toggle('open',open);$('mobile-overlay').hidden=!open;$('mobile-menu').setAttribute('aria-expanded',String(open))});
+$('mobile-overlay').addEventListener('click',()=>{$('sidebar').classList.remove('open');$('mobile-overlay').hidden=true;$('mobile-menu').setAttribute('aria-expanded','false')});
+
+// A prévia isola o HTML do estudante; os testes leem a estrutura com DOMParser.
+ui.frame.setAttribute('sandbox','');
+$('preview-size').textContent='DESKTOP';
+openLevel(current);
+
+</script>
+</body>
+</html>
